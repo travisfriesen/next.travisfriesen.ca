@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        //array: ['var(--font-array)'],
+        array: ['Array', 'sans-serif'],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -71,9 +75,6 @@ const config: Config = {
       "grey-80": "#CFCFCF",
       "grey-90": "#EFEFEF"
     },
-    fontFamily: {
-      array: ['var(--font-array)'],
-    }
   },
   },
   plugins: [

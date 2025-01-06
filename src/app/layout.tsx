@@ -1,16 +1,29 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
+
+// const arrayFont = localFont({
+//   src: [
+//     { path: '../../public/fonts/Array/Array-Regular.woff2', weight: '400'},
+//     { path: '../../public/fonts/Array/Array-Bold.woff2', weight: '700'},
+//     { path: '../../public/fonts/Array/Array-Semibold.woff2', weight: '600'},
+//     { path: '../../public/fonts/Array/Array-Wide.woff2', weight: '400'},
+//     { path: '../../public/fonts/Array/Array-BoldWide.woff2', weight: '700'},
+//     { path: '../../public/fonts/Array/Array-SemiboldWide.woff2', weight: '600'},
+//   ],
+//   variable: '--font-array',
+//   display: 'swap',
+// });
 
 const arrayFont = localFont({
   src: [
-    { path: '../../public/fonts/Array/Array-Regular.woff2', weight: '400'},
-    { path: '../../public/fonts/Array/Array-Bold.woff2', weight: '700'},
-    { path: '../../public/fonts/Array/Array-Semibold.woff2', weight: '600'},
-    { path: '../../public/fonts/Array/Array-Wide.woff2', weight: '400'},
-    { path: '../../public/fonts/Array/Array-BoldWide.woff2', weight: '700'},
-    { path: '../../public/fonts/Array/Array-SemiboldWide.woff2', weight: '600'},
+    { path: './fonts/Array/Array-Regular.woff2', weight: '400', style: "normal"},
+    { path: './fonts/Array/Array-Bold.woff2', weight: '700', style: "normal"},
+    { path: './fonts/Array/Array-Semibold.woff2', weight: '600', style: "normal"},
+    { path: './fonts/Array/Array-Wide.woff2', weight: '400', style: "normal"},
+    { path: './fonts/Array/Array-BoldWide.woff2', weight: '700', style: "normal"},
+    { path: './fonts/Array/Array-SemiboldWide.woff2', weight: '600', style: "normal"},
   ],
   variable: '--font-array',
   display: 'swap',
@@ -21,6 +34,8 @@ const arrayFont = localFont({
 // })
 
 const inter = Inter({ subsets: ["latin"] });
+
+const manrope = Manrope({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
