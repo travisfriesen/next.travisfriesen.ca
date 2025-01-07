@@ -12,6 +12,7 @@ const config: Config = {
       fontFamily: {
         //array: ['var(--font-array)'],
         array: ['Array', 'sans-serif'],
+        manrope: ['Manrope', 'sans-serif'],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
