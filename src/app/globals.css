@@ -51,12 +51,11 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-rgb: 227, 231, 211;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  background: #FDF9ED;
 }
 
 @layer utilities {
