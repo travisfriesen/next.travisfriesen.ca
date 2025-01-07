@@ -3,19 +3,6 @@ import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 
-// const arrayFont = localFont({
-//   src: [
-//     { path: '../../public/fonts/Array/Array-Regular.woff2', weight: '400'},
-//     { path: '../../public/fonts/Array/Array-Bold.woff2', weight: '700'},
-//     { path: '../../public/fonts/Array/Array-Semibold.woff2', weight: '600'},
-//     { path: '../../public/fonts/Array/Array-Wide.woff2', weight: '400'},
-//     { path: '../../public/fonts/Array/Array-BoldWide.woff2', weight: '700'},
-//     { path: '../../public/fonts/Array/Array-SemiboldWide.woff2', weight: '600'},
-//   ],
-//   variable: '--font-array',
-//   display: 'swap',
-// });
-
 const arrayFont = localFont({
   src: [
     { path: './fonts/Array/Array-Regular.woff2', weight: '400', style: "normal"},
@@ -28,10 +15,6 @@ const arrayFont = localFont({
   variable: '--font-array',
   display: 'swap',
 });
-
-// const array = localFont({
-//   src: "../fonts/Array/Array-Semi"
-// })
 
 const inter = Inter({ subsets: ["latin"] });
 

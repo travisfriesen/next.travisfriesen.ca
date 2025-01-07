@@ -2,49 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-/* src/app/globals.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @font-face {
   font-family: 'Array';
-  src: url('./fonts/Array/Array-Bold.ttf') format('truetype');
+  src: url('./fonts/Array/Array-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Array';
-  src: url('./fonts/Array/Array-BoldWide.ttf') format('truetype');
+  src: url('./fonts/Array/Array-BoldWide.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Array';
-  src: url('./fonts/Array/Array-Regular.ttf') format('truetype');
+  src: url('./fonts/Array/Array-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Array';
-  src: url('./fonts/Array/Array-Semibold.ttf') format('truetype');
+  src: url('./fonts/Array/Array-Semibold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Array';
-  src: url('./fonts/Array/Array-SemiboldWide.ttf') format('truetype');
+  src: url('./fonts/Array/Array-SemiboldWide.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Array';
-  src: url('./fonts/Array/Array-Wide.ttf') format('truetype');
+  src: url('./fonts/Array/Array-Wide.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
