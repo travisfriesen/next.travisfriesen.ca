@@ -44,6 +44,12 @@
   font-style: normal;
 }
 
+@layer components {
+  .grid-8-auto {
+    grid-template-columns: repeat(8, minmax(0, auto));
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
 }
