@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {FrontCard} from "@/components/FrontCard";
 import {ProfileCard} from "@/components/ProfileCard";
 import {Header} from "@/components/Header";

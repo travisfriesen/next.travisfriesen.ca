@@ -6,6 +6,7 @@ export const ContactCard = () => {
             <div className={`m-auto w-[65vw] text-gold-95 text-xl font-manrope font-bold`}>
                 <p>If you are interested in more of my work, I would encourage you to check out my GitHub.</p>
                 <br/>
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
                 <p>I'm also on LinkedIn, feel free to connect with me there!</p>
                 <br/>
                 <p>If you are interested in contacting me, I would encourage you to email me at
