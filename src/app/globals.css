@@ -59,6 +59,15 @@ body {
   background: #FDF9ED;
 }
 
+/* thank you noah */
+@media only screen and (max-width: 901px) {
+  .desktop-only { display: none !important; }
+}
+
+@media only screen and (min-width: 902px) {
+  .mobile-only { display: none !important; }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
