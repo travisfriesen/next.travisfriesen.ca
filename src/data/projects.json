@@ -1,0 +1,51 @@
+{
+  "csdiscordbot": {
+    "title": "UManitoba Computer Science Discord Bot",
+    "description": "",
+    "github": "https://github.com/umanitoba-cssa/honkbot2",
+    "link": "",
+    "points": {
+      "1": "Assisted in Development and Maintenance of the Moderation and Verification bot for the CS Discord Server",
+      "2": "Developed Logging feature for Moderation Commands",
+      "3": "Worked on integrating a Pocketbase database for data storage"
+    },
+    "tech": {
+      "1": "Typescript",
+      "2": "Discord.js",
+      "3": "Pocketbase DB"
+    }
+  },
+  "rubysmb": {
+    "title": "UManitoba Computer Science Discord Bot",
+    "description": "",
+    "github": "https://github.com/travisfriesen/rubys-website",
+    "link": "rubysmb.ca",
+    "points": {
+      "1": "Developed a responsive website with Next.js using Typescript",
+      "2": "Designed website with an adaptable card style system for conveying information",
+      "3": "Worked to ensure designs followed WCAG Colour Guidelines"
+    },
+    "tech": {
+      "1": "Typescript",
+      "2": "Next.js",
+      "3": "Vercel"
+    }
+  },
+  "tf.ca": {
+    "title": "travisfriesen.ca",
+    "description": "",
+    "github": "https://github.com/travisfriesen/next.travisfriesen.ca",
+    "link": "travisfriesen.ca",
+    "points": {
+      "1": "Developed a personal portfolio website using Next.js with Typescript, and TailwindsCSS",
+      "2": "Designed website with an adaptable card style system for conveying information",
+      "3": "Hosted using a laptop and a Ubuntu VM on an app called Coolify"
+    },
+    "tech": {
+      "1": "Typescript",
+      "2": "Next.js",
+      "3": "TailwindCSS",
+      "4": "Coolify"
+    }
+  }
+}
