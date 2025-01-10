@@ -15,7 +15,7 @@ export const ContactCard = () => {
             <div className={`flex m-auto gap-[4vw] py-5`}>
                 <a href={"https://github.com/travisfriesen"}><FaGithub size={60}/></a>
                 <a href={"mailto:travis@travisfriesen.ca"}><FaEnvelope size={60}/></a>
-                <a href={"https://linkedin.com/travisfriesen"}><FaLinkedin size={60}/></a>
+                <a href={"https://linkedin.com/in/travisfriesen"}><FaLinkedin size={60}/></a>
             </div>
         </div>
     )
