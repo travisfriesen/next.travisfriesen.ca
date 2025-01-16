@@ -19,7 +19,7 @@
     "title": "rubysmb.ca",
     "description": "",
     "github": "https://github.com/travisfriesen/rubys-website",
-    "link": "rubysmb.ca",
+    "link": "https://rubysmb.ca",
     "points": {
       "1": "Developed a responsive website with Next.js using Typescript",
       "2": "Designed website with an adaptable card style system for conveying information",
@@ -35,7 +35,7 @@
     "title": "travisfriesen.ca",
     "description": "",
     "github": "https://github.com/travisfriesen/next.travisfriesen.ca",
-    "link": "travisfriesen.ca",
+    "link": "https://travisfriesen.ca",
     "points": {
       "1": "Developed a personal portfolio website using Next.js with Typescript, and TailwindsCSS",
       "2": "Designed website with an adaptable card style system for conveying information",

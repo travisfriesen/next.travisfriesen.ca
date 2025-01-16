@@ -10,7 +10,6 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        //array: ['var(--font-array)'],
         array: ['Array', 'sans-serif'],
         manrope: ['Manrope', 'sans-serif'],
       },
