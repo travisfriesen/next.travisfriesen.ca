@@ -1,7 +1,7 @@
 {
   "csdiscordbot": {
     "title": "UManitoba Computer Science Discord Bot",
-    "description": "",
+    "description": "The verification and moderation bot for the University of Manitoba's Computer Science discord. Used to help manage access to the server and link discord users to their university email.",
     "github": "https://github.com/umanitoba-cssa/honkbot2",
     "link": "",
     "points": {
@@ -16,8 +16,8 @@
     }
   },
   "rubysmb": {
-    "title": "rubysmb.ca",
-    "description": "",
+    "title": "Business website for Ruby's Paradise",
+    "description": "Ruby's Paradise is a small business that runs both a driving range and arcade in Winnipeg Beach, MB. I was asked to help them create a website to help enhance their presence online and to have a place to direct customers to for enquiries.",
     "github": "https://github.com/travisfriesen/rubys-website",
     "link": "https://rubysmb.ca",
     "points": {
@@ -32,8 +32,8 @@
     }
   },
   "tf.ca": {
-    "title": "travisfriesen.ca",
-    "description": "",
+    "title": "Personal Portfolio Website",
+    "description": "This is my third iteration of my personal portfolio website. The last revamp being in January 2025, working to showcase the new design and technical skills that I have developed since the last revamp.",
     "github": "https://github.com/travisfriesen/next.travisfriesen.ca",
     "link": "https://travisfriesen.ca",
     "points": {
