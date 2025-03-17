@@ -56,12 +56,15 @@ export default function Vote() {
                         </div>
                         <div className={`font-manrope font-bold text-xl my-auto text-gold-95 ml-4 mt-7`}>
                             <p>
-                                I am a student working towards a degree in Computer Science University of Manitoba.
+                                Currently I am serving as the CSSA Director of Technology. I am happy to announce that I am running for CSSA President.
                             </p>
                             <br/>
                             <p>
-                                Currently I’m working on a few websites, along with some Discord bots and a few other projects
-                                that I’m cooking up.
+                                My goals this year are continue working on the various safety measures that have been put in place (like the lounge supervisor training, and discord moderation), continue to work on connecting students within the Computer Science community.
+                            </p>
+                            <br/>
+                            <p>
+                                I plan to continue working on events that bring the community together.
                             </p>
                         </div>
                     </div>
