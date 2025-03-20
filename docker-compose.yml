@@ -1,0 +1,6 @@
+services:
+  tf-ca:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "0.0.0.0:3000:3000"
