@@ -1,4 +1,20 @@
 {
+  "commitcv": {
+    "title": "CommitCV",
+    "description": "CommitCV is a JSON based Latex resume parser, taking in a JSON file with your resume, parsing and outputting it to either PDF, .json, or .tex.",
+    "github": "https://github.com/CommitCV/CommitCV",
+    "link": "https://commitcv.com",
+    "points": {
+      "1": "Developed a JSON based online resume editor using component based cards",
+      "2": "Implemented an Express webserver endpoint to handle pdflatex conversions",
+      "3": "Containerized the application using Docker to manage simple deployments"
+    },
+    "tech": {
+      "1": "Typescript",
+      "2": "Next.js",
+      "3": "Express.js"
+    }
+  },
   "csdiscordbot": {
     "title": "UManitoba Computer Science Discord Bot",
     "description": "The verification and moderation bot for the University of Manitoba's Computer Science discord. Used to help manage access to the server and link discord users to their university email.",
