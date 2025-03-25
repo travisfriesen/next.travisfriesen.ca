@@ -2,6 +2,7 @@ import {Footer} from "@/components/Footer";
 import Image from "next/image";
 import travisImg from "../../../public/travis.png";
 import {Header} from "@/components/Header";
+import Link from "next/link";
 
 export default function Vote() {
     return (
@@ -70,7 +71,10 @@ export default function Vote() {
                     </div>
                 </div>
             </div>
-            <Header text={"Vote March 25 - March 27"}/>
+            <Link href={`https://forms.office.com/r/YQjPTXQZJF`}>
+                <Header text={"Voting open now!"}/>
+                <Header text={" Click to vote."}/>
+            </Link>
             <Footer/>
         </main>
     );
