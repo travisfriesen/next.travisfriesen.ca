@@ -5,6 +5,8 @@ on:
     branches:
     - workflow-test
 
+env:
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push-docker-image:
@@ -43,8 +45,6 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
              ghcr.io/${{ env.IMAGE_NAME }}:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
       - name: Image digest
         run: echo ${{ steps.build-and-push.outputs.digest }}
