@@ -1,12 +1,14 @@
 name: Build Docker Container
 
 on:
-  push:
-    branches:
-    - workflow-test
+  workflow_call:
+    inputs:
+      IMAGE_NAME:
+        required: true
+        type: string
 
 env:
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ inputs.IMAGE_NAME }}
 
 jobs:
   build-and-push-docker-image:

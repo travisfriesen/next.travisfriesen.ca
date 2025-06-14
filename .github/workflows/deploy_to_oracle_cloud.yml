@@ -1,0 +1,44 @@
+name: Run Ansible Playbook
+
+on:
+  workflow_call:
+    inputs:
+      SSH_HOST:
+        required: true
+        type: string
+      SSH_USER:
+        required: true
+        type: string
+      SSH_PRIVATE_KEY:
+        required: true
+        type: string
+      PORT:
+        required: true
+        type: string
+
+jobs:
+  ansible:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Ansible
+        run: pip install ansible
+
+      - name: Add SSH key
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ inputs.SSH_PRIVATE_KEY }}
+
+      - name: Run Ansible Playbook
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: 'False'
+        run: |
+          ansible-playbook -i ${{ inputs.SSH_HOST }}, ansible_deploy_container.yml --user ${{ inputs.SSH_USER }} --extra-vars "port=${{ inputs.PORT }}"
