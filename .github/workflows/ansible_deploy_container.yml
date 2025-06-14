@@ -1,0 +1,23 @@
+---
+- name: Deploy Docker container on Oracle Cloud Server
+  hosts: zeus
+  become: true
+  vars:
+    container_name: tfca_container
+    image_name: ghcr.io/travisfriesen/next.travisfriesen.ca:latest
+    port: 80
+
+  tasks:
+    - name: Pull Docker image
+      docker_image:
+        name: "{{ image_name }}"
+        source: pull
+
+    - name: Run Docker container
+      docker_container:
+        name: "{{ container_name }}"
+        image: "{{ image_name }}"
+        state: started
+        restart_policy: always
+        ports:
+          - "{{ port }}:3000"
