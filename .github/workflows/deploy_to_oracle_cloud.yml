@@ -18,7 +18,7 @@ on:
 
 jobs:
   ansible:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repository
@@ -32,13 +32,13 @@ jobs:
       - name: Install Ansible
         run: pip install ansible
 
-      - name: Add SSH key
-        uses: webfactory/ssh-agent@v0.8.0
-        with:
-          ssh-private-key: ${{ inputs.SSH_PRIVATE_KEY }}
+#      - name: Add SSH key
+#        uses: webfactory/ssh-agent@v0.8.0
+#        with:
+#          ssh-private-key: ${{ inputs.SSH_PRIVATE_KEY }}
 
       - name: Run Ansible Playbook
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'False'
         run: |
-          ansible-playbook -i ${{ inputs.SSH_HOST }}, ansible_deploy_container.yml --user ${{ inputs.SSH_USER }} --extra-vars "port=${{ inputs.PORT }}"
+          ansible-playbook -i localhost, ansible_deploy_container.yml --user ${{ inputs.SSH_USER }} --extra-vars "port=${{ inputs.PORT }}"
