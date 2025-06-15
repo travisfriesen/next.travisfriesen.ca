@@ -37,9 +37,12 @@ jobs:
   deploy:
     needs: set-port
     uses: ./.github/workflows/deploy_to_oracle_cloud.yml
-    secrets: inherit
+    secrets:
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
     with:
-      SSH_HOST: ${{ env.SSH_HOST }}
-      SSH_USER: ${{ env.SSH_USER }}
-      SSH_PRIVATE_KEY: ${{ env.SSH_PRIVATE_KEY }}
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       PORT: ${{ needs.set-port.outputs.PORT }}
