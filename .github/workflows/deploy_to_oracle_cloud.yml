@@ -41,4 +41,4 @@ jobs:
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'False'
         run: |
-          ansible-playbook -i localhost, ansible_deploy_container.yml --user ${{ inputs.SSH_USER }} --extra-vars "port=${{ inputs.PORT }}"
+          ansible-playbook -i localhost, /home/ubuntu/actions-runner/_work/next.travisfriesen.ca/next.travisfriesen.ca/.github/workflows/ansible_deploy_container.yml --user ${{ inputs.SSH_USER }} --extra-vars "port=${{ inputs.PORT }}"
