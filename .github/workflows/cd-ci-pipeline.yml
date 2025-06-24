@@ -40,11 +40,11 @@ jobs:
           fi
 
   deploy:
-    needs: set-port
-    uses: ./.github/workflows/deploy_to_oracle_cloud.yml
-    with:
-      SSH_HOST: $env.SSH_HOST
-      SSH_USER: $env.SSH_USER
-      SSH_PRIVATE_KEY: $env.SSH_PRIVATE_KEY
-      PORT: ${{ needs.set-port.outputs.PORT }}
+      needs: set-port
+      uses: ./.github/workflows/deploy_to_oracle_cloud.yml
+      with:
+        SSH_HOST: $env.SSH_HOST
+        SSH_USER: $env.SSH_USER
+        SSH_PRIVATE_KEY: $env.SSH_PRIVATE_KEY
+        PORT: ${{ needs.set-port.outputs.PORT }}
       environment: ${{ github.ref_name == 'release' && 'zeus-production' || github.ref_name == 'main' && 'zeus-preview' || 'unknown' }}
