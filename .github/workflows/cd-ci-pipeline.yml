@@ -34,19 +34,30 @@ jobs:
         id: set-port
         run: |
           if [[ "${GITHUB_REF##*/}" == "release" ]]; then
-            echo "PORT=80" >> $GITHUB_OUTPUT
             echo "ENVIRONMENT=zeus-production" >> $GITHUB_OUTPUT
           else
             echo "PORT=3000" >> $GITHUB_OUTPUT
             echo "ENVIRONMENT=zeus-preview" >> $GITHUB_OUTPUT
           fi
 
-  deploy:
+  deploy-production:
     needs: set-port
+    if: ${{ needs.set-port.outputs.ENVIRONMENT == 'zeus-production' }}
+    uses: ./.github/workflows/deploy_to_oracle_cloud.yml
+    with:
+      SSH_HOST: $env.SSH_HOST
+      SSH_USER: $env.SSH_USER
+      SSH_PRIVATE_KEY: $env.SSH_PRIVATE_KEY
+      PORT: 80
+    environment: zeus-production
+
+  deploy-preview:
+    needs: set-port
+    if: ${{ needs.set-port.outputs.ENVIRONMENT == 'zeus-preview' }}
     uses: ./.github/workflows/deploy_to_oracle_cloud.yml
     with:
       SSH_HOST: $env.SSH_HOST
       SSH_USER: $env.SSH_USER
       SSH_PRIVATE_KEY: $env.SSH_PRIVATE_KEY
       PORT: ${{ needs.set-port.outputs.PORT }}
-    environment: ${{ needs.set-port.outputs.ENVIRONMENT }}
+    environment: zeus-preview
