@@ -1,6 +1,7 @@
 ---
 - name: Deploy Docker container on Oracle Cloud Server
-  hosts: zeus
+  hosts: localhost
+  connection: local
   become: true
   vars:
     container_name: tfca_container
