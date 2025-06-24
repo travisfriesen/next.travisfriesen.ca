@@ -3,6 +3,8 @@
   hosts: localhost
   connection: local
   become: true
+  become_method: sudo
+  become_flags: "-E"
   vars:
     container_name: tfca_container
     image_name: ghcr.io/travisfriesen/next.travisfriesen.ca:latest
@@ -22,3 +24,4 @@
         restart_policy: always
         ports:
           - "{{ port }}:3000"
+        container_default_behavior: compatibility
