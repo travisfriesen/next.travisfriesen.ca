@@ -23,6 +23,10 @@ jobs:
     outputs:
       skip-build: ${{ steps.check.outputs.skip-build }}
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - name: Check if build should be skipped
         id: check
         run: |
@@ -42,42 +46,33 @@ jobs:
 
   set-port:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [ check-commit-message, build ]
+    if: ${{ always() && (needs.build.result == 'success' || needs.check-commit-message.outputs.skip-build == 'true') }}
     outputs:
       PORT: ${{ steps.set-port.outputs.PORT }}
+      ENVIRONMENT: ${{ steps.set-port.outputs.ENVIRONMENT }}
+      ENV_URL: ${{ steps.set-port.outputs.ENV_URL }}
     steps:
       - name: Set port based on branch
         id: set-port
         run: |
           if [[ "${GITHUB_REF##*/}" == "release" ]]; then
+            echo "PORT=80" >> $GITHUB_OUTPUT
             echo "ENVIRONMENT=zeus-production" >> $GITHUB_OUTPUT
+            echo "ENV_URL=https://travisfriesen.ca" >> $GITHUB_OUTPUT
           else
             echo "PORT=3000" >> $GITHUB_OUTPUT
             echo "ENVIRONMENT=zeus-preview" >> $GITHUB_OUTPUT
+            echo "ENV_URL=https://travisfriesen.ca" >> $GITHUB_OUTPUT
           fi
 
-  deploy-production:
+  deploy:
     needs: set-port
-    if: ${{ needs.set-port.outputs.ENVIRONMENT == 'zeus-production' }}
-    environment:
-      name: zeus-production
-      url: https://travisfriesen.ca
     uses: ./.github/workflows/deploy_to_oracle_cloud.yml
     with:
-      SSH_HOST: ${{ env.SSH_HOST }}
-      SSH_USER: ${{ env.SSH_USER }}
-      SSH_PRIVATE_KEY: ${{ env.SSH_PRIVATE_KEY }}
-      PORT: 80
-
-  deploy-preview:
-    environment:
-      name: zeus-preview
-      url: https://zeus-preview.travisfriesen.ca
-    needs: set-port
-    if: ${{ needs.set-port.outputs.ENVIRONMENT == 'zeus-preview' }}
-    uses: ./.github/workflows/deploy_to_oracle_cloud.yml
-    with:
-      SSH_HOST: $env.SSH_HOST
-      SSH_USER: $env.SSH_USER
-      SSH_PRIVATE_KEY: $env.SSH_PRIVATE_KEY
+#      SSH_HOST: ${{ env.SSH_HOST }}
+#      SSH_USER: ${{ env.SSH_USER }}
+#      SSH_PRIVATE_KEY: ${{ env.SSH_PRIVATE_KEY }}
       PORT: ${{ needs.set-port.outputs.PORT }}
+      ENVIRONMENT: ${{ needs.set-port.outputs.ENVIRONMENT }}
+      ENV_URL: ${{ needs.set-port.outputs.ENV_URL }}

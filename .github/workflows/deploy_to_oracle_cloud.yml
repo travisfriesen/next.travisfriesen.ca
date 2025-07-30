@@ -3,22 +3,31 @@ name: Run Ansible Playbook
 on:
   workflow_call:
     inputs:
-      SSH_HOST:
-        required: true
-        type: string
-      SSH_USER:
-        required: true
-        type: string
-      SSH_PRIVATE_KEY:
-        required: true
-        type: string
+#      SSH_HOST:
+#        required: true
+#        type: string
+#      SSH_USER:
+#        required: true
+#        type: string
+#      SSH_PRIVATE_KEY:
+#        required: true
+#        type: string
       PORT:
+        required: true
+        type: string
+      ENVIRONMENT:
+        required: true
+        type: string
+      ENV_URL:
         required: true
         type: string
 
 jobs:
   ansible:
     runs-on: self-hosted
+    environment:
+      name: ${{ inputs.ENVIRONMENT }}
+      url: ${{ inputs.ENV_URL }}
 
     steps:
 #      - name: Checkout repository
