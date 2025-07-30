@@ -18,7 +18,23 @@ env:
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
 jobs:
+  check-commit-message:
+    runs-on: ubuntu-latest
+    outputs:
+      skip-build: ${{ steps.check.outputs.skip-build }}
+    steps:
+      - name: Check if build should be skipped
+        id: check
+        run: |
+          if git log -1 --pretty=%B | grep -q '\[skip build\]'; then
+            echo "skip-build=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip-build=false" >> $GITHUB_OUTPUT
+          fi
+
   build:
+    needs: check-commit-message
+    if: ${{ needs.check-commit-message.outputs.skip-build != 'true' }}
     uses: ./.github/workflows/build_container.yml
     secrets: inherit
     with:
@@ -44,13 +60,13 @@ jobs:
     needs: set-port
     if: ${{ needs.set-port.outputs.ENVIRONMENT == 'zeus-production' }}
     environment:
-        name: zeus-production
-        url: https://travisfriesen.ca
+      name: zeus-production
+      url: https://travisfriesen.ca
     uses: ./.github/workflows/deploy_to_oracle_cloud.yml
     with:
-      SSH_HOST: $env.SSH_HOST
-      SSH_USER: $env.SSH_USER
-      SSH_PRIVATE_KEY: $env.SSH_PRIVATE_KEY
+      SSH_HOST: ${{ env.SSH_HOST }}
+      SSH_USER: ${{ env.SSH_USER }}
+      SSH_PRIVATE_KEY: ${{ env.SSH_PRIVATE_KEY }}
       PORT: 80
 
   deploy-preview:
