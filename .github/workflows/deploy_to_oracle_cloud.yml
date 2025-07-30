@@ -12,6 +12,20 @@ on:
       ENV_URL:
         required: true
         type: string
+  workflow_dispatch:
+    inputs:
+      PORT:
+        required: true
+        type: string
+        default: 3000
+      ENVIRONMENT:
+        required: true
+        type: string
+        default: zeus-preview
+      ENV_URL:
+        required: true
+        type: string
+        default: https://travisfriesen.ca
 
 jobs:
   ansible:
