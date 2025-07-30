@@ -3,15 +3,6 @@ name: Run Ansible Playbook
 on:
   workflow_call:
     inputs:
-#      SSH_HOST:
-#        required: false
-#        type: string
-      SSH_USER:
-        required: true
-        type: string
-#      SSH_PRIVATE_KEY:
-#        required: false
-#        type: string
       PORT:
         required: true
         type: string
@@ -50,4 +41,4 @@ jobs:
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'False'
         run: |
-          ansible-playbook -i localhost, /home/ubuntu/actions-runner/_work/next.travisfriesen.ca/next.travisfriesen.ca/.github/workflows/ansible_deploy_container.yml --user ${{ inputs.SSH_USER }} --extra-vars "port=${{ inputs.PORT }}"
+          ansible-playbook -i localhost, /home/ubuntu/actions-runner/_work/next.travisfriesen.ca/next.travisfriesen.ca/.github/workflows/ansible_deploy_container.yml --user ubuntu --extra-vars "port=${{ inputs.PORT }}"
