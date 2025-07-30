@@ -43,15 +43,20 @@ jobs:
   deploy-production:
     needs: set-port
     if: ${{ needs.set-port.outputs.ENVIRONMENT == 'zeus-production' }}
+    environment:
+        name: zeus-production
+        url: https://travisfriesen.ca
     uses: ./.github/workflows/deploy_to_oracle_cloud.yml
     with:
       SSH_HOST: $env.SSH_HOST
       SSH_USER: $env.SSH_USER
       SSH_PRIVATE_KEY: $env.SSH_PRIVATE_KEY
       PORT: 80
-    environment: zeus-production
 
   deploy-preview:
+    environment:
+      name: zeus-preview
+      url: https://zeus-preview.travisfriesen.ca
     needs: set-port
     if: ${{ needs.set-port.outputs.ENVIRONMENT == 'zeus-preview' }}
     uses: ./.github/workflows/deploy_to_oracle_cloud.yml
@@ -60,4 +65,3 @@ jobs:
       SSH_USER: $env.SSH_USER
       SSH_PRIVATE_KEY: $env.SSH_PRIVATE_KEY
       PORT: ${{ needs.set-port.outputs.PORT }}
-    environment: zeus-preview
