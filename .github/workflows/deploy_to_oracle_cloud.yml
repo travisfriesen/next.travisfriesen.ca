@@ -4,13 +4,13 @@ on:
   workflow_call:
     inputs:
 #      SSH_HOST:
-#        required: true
+#        required: false
 #        type: string
       SSH_USER:
         required: true
         type: string
 #      SSH_PRIVATE_KEY:
-#        required: true
+#        required: false
 #        type: string
       PORT:
         required: true
