@@ -71,7 +71,8 @@ jobs:
     uses: ./.github/workflows/deploy_to_oracle_cloud.yml
     with:
 #      SSH_HOST: ${{ env.SSH_HOST }}
-      SSH_USER: ${{ env.SSH_USER }}
+#      SSH_USER: ${{ env.SSH_USER }}
+      SSH_USER: ubuntu
 #      SSH_PRIVATE_KEY: ${{ env.SSH_PRIVATE_KEY }}
       PORT: ${{ needs.set-port.outputs.PORT }}
       ENVIRONMENT: ${{ needs.set-port.outputs.ENVIRONMENT }}
