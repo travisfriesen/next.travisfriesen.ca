@@ -47,7 +47,7 @@ jobs:
   set-port:
     runs-on: ubuntu-latest
     needs: [ check-commit-message, build ]
-    if: ${{ always() && (needs.build.result == 'success' || needs.check-commit-message.outputs.skip-build == 'true') }}
+    if: ${{ always() }}
     outputs:
       PORT: ${{ steps.set-port.outputs.PORT }}
       ENVIRONMENT: ${{ steps.set-port.outputs.ENVIRONMENT }}
@@ -74,15 +74,18 @@ jobs:
   debug-before-deploy:
     runs-on: ubuntu-latest
     needs: set-port
+    if: ${{ always() && needs.set-port.result != 'failure' }}
     steps:
       - name: Debug values before deploy
         run: |
+          echo "set-port job status: ${{ needs.set-port.result }}"
           echo "PORT from set-port: ${{ needs.set-port.outputs.PORT }}"
           echo "ENVIRONMENT from set-port: ${{ needs.set-port.outputs.ENVIRONMENT }}"
           echo "ENV_URL from set-port: ${{ needs.set-port.outputs.ENV_URL }}"
 
   deploy:
-    needs: set-port
+    needs: [set-port, debug-before-deploy]
+    if: ${{ always() && needs.set-port.result != 'failure' }}
     uses: ./.github/workflows/deploy_to_oracle_cloud.yml
     with:
       PORT: ${{ needs.set-port.outputs.PORT }}
