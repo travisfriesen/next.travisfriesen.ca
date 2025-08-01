@@ -12,20 +12,6 @@ on:
       ENV_URL:
         required: true
         type: string
-  workflow_dispatch:
-    inputs:
-      PORT:
-        required: true
-        type: string
-        default: 3000
-      ENVIRONMENT:
-        required: true
-        type: string
-        default: zeus-preview
-      ENV_URL:
-        required: true
-        type: string
-        default: https://travisfriesen.ca
 
 jobs:
   ansible:
@@ -35,24 +21,17 @@ jobs:
       url: ${{ inputs.ENV_URL }}
 
     steps:
-#      - name: Checkout repository
-#        uses: actions/checkout@v4
-#
-#      - name: Set up Python
-#        uses: actions/setup-python@v5
-#        with:
-#          python-version: '3.x'
-#
-#      - name: Install Ansible
-#        run: pip install ansible
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-#      - name: Add SSH key
-#        uses: webfactory/ssh-agent@v0.8.0
-#        with:
-#          ssh-private-key: ${{ inputs.SSH_PRIVATE_KEY }}
+      - name: Download Docker image artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: docker-image
+          path: /tmp/${{ inputs.ENVIRONMENT }}
 
       - name: Run Ansible Playbook
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'False'
         run: |
-          ansible-playbook -i localhost, /home/ubuntu/actions-runner/_work/next.travisfriesen.ca/next.travisfriesen.ca/.github/workflows/ansible_deploy_container.yml --user ubuntu --extra-vars "port=${{ inputs.PORT }}"
+          ansible-playbook -i localhost, .github/workflows/ansible_deploy_container.yml --user ubuntu --extra-vars "port=${{ inputs.PORT }} container_name=tfca_container-${{ inputs.ENVIRONMENT }} image_name=tf.ca-${{ inputs.ENVIRONMENT }} artifact_path=/tmp/${{ inputs.ENVIRONMENT }}/docker-image.tar"

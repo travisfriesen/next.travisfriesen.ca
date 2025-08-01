@@ -71,18 +71,6 @@ jobs:
           echo "ENVIRONMENT: ${{ steps.set-port.outputs.ENVIRONMENT }}"
           echo "ENV_URL: ${{ steps.set-port.outputs.ENV_URL }}"
 
-  debug-before-deploy:
-    runs-on: ubuntu-latest
-    needs: set-port
-    if: ${{ always() && needs.set-port.result != 'failure' }}
-    steps:
-      - name: Debug values before deploy
-        run: |
-          echo "set-port job status: ${{ needs.set-port.result }}"
-          echo "PORT from set-port: ${{ needs.set-port.outputs.PORT }}"
-          echo "ENVIRONMENT from set-port: ${{ needs.set-port.outputs.ENVIRONMENT }}"
-          echo "ENV_URL from set-port: ${{ needs.set-port.outputs.ENV_URL }}"
-
   deploy:
     needs: [set-port, debug-before-deploy]
     if: ${{ always() && needs.set-port.result != 'failure' }}

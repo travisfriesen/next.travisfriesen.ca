@@ -7,14 +7,17 @@
   become_flags: "-E"
   vars:
     container_name: tfca_container
-    image_name: ghcr.io/travisfriesen/next.travisfriesen.ca:latest
+    image_name: next.travisfriesen.ca:latest
     port: 80
+    artifact_path: /tmp/docker-image.tar
 
   tasks:
-    - name: Pull Docker image
+    - name: Load Docker image from tar file
       docker_image:
         name: "{{ image_name }}"
-        source: pull
+        source: load
+        load_path: "{{ artifact_path }}"
+        state: present
 
     - name: Run Docker container
       docker_container:
