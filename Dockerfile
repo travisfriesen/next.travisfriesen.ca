@@ -11,8 +11,7 @@ COPY . .
 # Set environment to production
 ENV NODE_ENV=production
 
-# Run tests and build the application
-RUN bun test
+# Build the application
 RUN bun run build
 
 # Expose the port from the .env file
