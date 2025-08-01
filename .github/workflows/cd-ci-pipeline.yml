@@ -36,22 +36,14 @@ jobs:
             echo "skip-build=false" >> $GITHUB_OUTPUT
           fi
 
-  build:
-    needs: check-commit-message
-    if: ${{ needs.check-commit-message.outputs.skip-build != 'true' }}
-    uses: ./.github/workflows/build_container.yml
-    secrets: inherit
-    with:
-      IMAGE_NAME: ${{ github.repository }}
-
   set-port:
     runs-on: ubuntu-latest
-    needs: [ check-commit-message, build ]
-    if: ${{ always() }}
+    needs: check-commit-message
     outputs:
       PORT: ${{ steps.set-port.outputs.PORT }}
       ENVIRONMENT: ${{ steps.set-port.outputs.ENVIRONMENT }}
       ENV_URL: ${{ steps.set-port.outputs.ENV_URL }}
+      IMAGE_NAME: ${{ steps.set-port.outputs.IMAGE_NAME }}
     steps:
       - name: Set port based on branch
         id: set-port
@@ -60,19 +52,30 @@ jobs:
             echo "PORT=80" >> $GITHUB_OUTPUT
             echo "ENVIRONMENT=zeus-production" >> $GITHUB_OUTPUT
             echo "ENV_URL=https://travisfriesen.ca" >> $GITHUB_OUTPUT
+            echo "IMAGE_NAME=tf.ca-zeus-production" >> $GITHUB_OUTPUT
           else
             echo "PORT=3000" >> $GITHUB_OUTPUT
             echo "ENVIRONMENT=zeus-preview" >> $GITHUB_OUTPUT
             echo "ENV_URL=https://travisfriesen.ca" >> $GITHUB_OUTPUT
+            echo "IMAGE_NAME=tf.ca-zeus-preview" >> $GITHUB_OUTPUT
           fi
       - name: Debug outputs
         run: |
           echo "PORT: ${{ steps.set-port.outputs.PORT }}"
           echo "ENVIRONMENT: ${{ steps.set-port.outputs.ENVIRONMENT }}"
           echo "ENV_URL: ${{ steps.set-port.outputs.ENV_URL }}"
+          echo "IMAGE_NAME: ${{ steps.set-port.outputs.IMAGE_NAME }}"
+
+  build:
+    needs: set-port
+    if: ${{ needs.check-commit-message.outputs.skip-build != 'true' }}
+    uses: ./.github/workflows/build_container.yml
+    secrets: inherit
+    with:
+      IMAGE_NAME: ${{ needs.set-port.outputs.IMAGE_NAME }}
 
   deploy:
-    needs: [set-port]
+    needs: [set-port, build]
     if: ${{ always() && needs.set-port.result != 'failure' }}
     uses: ./.github/workflows/deploy_to_oracle_cloud.yml
     with:
