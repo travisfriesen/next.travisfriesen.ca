@@ -39,7 +39,7 @@ jobs:
           docker save ${{ env.IMAGE_NAME }}:latest > image-artifact/docker-image.tar
 
       - name: Upload Docker image as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: docker-image
           path: image-artifact/docker-image.tar
