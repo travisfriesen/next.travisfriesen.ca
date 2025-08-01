@@ -12,6 +12,20 @@
     artifact_path: /tmp/docker-image.tar
 
   tasks:
+    - name: Stop and remove existing container if it exists
+      docker_container:
+        name: "{{ container_name }}"
+        state: absent
+        force_kill: yes
+      ignore_errors: yes
+
+    - name: Remove existing image if it exists
+      docker_image:
+        name: "{{ image_name }}"
+        state: absent
+        force: yes
+      ignore_errors: yes
+
     - name: Load Docker image from tar file
       docker_image:
         name: "{{ image_name }}"
