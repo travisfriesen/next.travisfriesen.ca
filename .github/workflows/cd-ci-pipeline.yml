@@ -75,7 +75,7 @@ jobs:
         uses: travisfriesen/workflows/download_docker_container_and_run_ansible_playbook@main
         with:
           ENVIRONMENT: ${{ needs.set-port.outputs.ENVIRONMENT }}
-          EXTRA_VARS: "port=${{ needs.set-port.outputs.PORT }} container_name=tfca_container-${{ needs.set-port.outputs.ENVIRONMENT }} image_name=${{ needs.set-port.outputs.IMAGE_NAME }} artifact_path=/tmp/${{ needs.set-port.outputs.ENVIRONMENT }}/${{ needs.set-port.outputs.IMAGE_NAME }}.tar"
+          EXTRA_VARS: "port=${{ needs.set-port.outputs.PORT }} container_name=tfca_container-${{ needs.set-port.outputs.ENVIRONMENT }} image_name=${{ needs.set-port.outputs.IMAGE_NAME }}:${{ github.run_number }}-${{ github.run_attempt }} artifact_path=/tmp/${{ needs.set-port.outputs.ENVIRONMENT }}/${{ needs.set-port.outputs.IMAGE_NAME }}.tar"
           ARTIFACT_NAME: ${{ needs.set-port.outputs.IMAGE_NAME }}
           USER: "ubuntu"
           PLAYBOOK_PATH: ".github/workflows/ansible_deploy_container.yml"
