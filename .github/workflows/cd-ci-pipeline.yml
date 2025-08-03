@@ -58,7 +58,6 @@ jobs:
   build-and-deploy:
     runs-on: self-hosted
     needs: set-port
-    if: ${{ always() && needs.set-port.result != 'failure' && needs.build.result == 'success' }}
     environment:
       name: ${{ needs.set-port.outputs.ENVIRONMENT }}
       url: ${{ needs.set-port.outputs.ENV_URL }}
