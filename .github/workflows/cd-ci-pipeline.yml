@@ -60,7 +60,7 @@ jobs:
     needs: set-port
     steps:
       - name: Build Container
-        uses: travisfriesen/workflows/build_and_upload_docker_container@main
+        uses: travisfriesen/workflows/build_and_upload_docker_container@v1
         with:
           IMAGE_NAME: ${{ needs.set-port.outputs.IMAGE_NAME }}
 
@@ -72,7 +72,7 @@ jobs:
       url: ${{ needs.set-port.outputs.ENV_URL }}
     steps:
       - name: Deploy using Ansible Playbook
-        uses: travisfriesen/workflows/download_docker_container_and_run_ansible_playbook@main
+        uses: travisfriesen/workflows/download_docker_container_and_run_ansible_playbook@v1
         with:
           ENVIRONMENT: ${{ needs.set-port.outputs.ENVIRONMENT }}
           EXTRA_VARS: "port=${{ needs.set-port.outputs.PORT }} container_name=tfca_container-${{ needs.set-port.outputs.ENVIRONMENT }} image_name=${{ needs.set-port.outputs.IMAGE_NAME }}:${{ github.run_number }}-${{ github.run_attempt }} artifact_path=/tmp/${{ needs.set-port.outputs.ENVIRONMENT }}/${{ needs.set-port.outputs.IMAGE_NAME }}.tar"
