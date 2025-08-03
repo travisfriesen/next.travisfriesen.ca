@@ -78,5 +78,5 @@ jobs:
           EXTRA_VARS: "port=${{ needs.set-port.outputs.PORT }} container_name=tfca_container-${{ needs.set-port.outputs.ENVIRONMENT }} image_name=${{ needs.set-port.outputs.IMAGE_NAME }}:${{ github.run_number }}-${{ github.run_attempt }} artifact_path=/tmp/${{ needs.set-port.outputs.ENVIRONMENT }}/${{ needs.set-port.outputs.IMAGE_NAME }}.tar"
           ARTIFACT_NAME: ${{ needs.set-port.outputs.IMAGE_NAME }}
           USER: "ubuntu"
-          PLAYBOOK_PATH: ".github/workflows/ansible_deploy_container.yml"
+          PLAYBOOK_PATH: ".ansible/playbook/ansible_deploy_container.yml"
           HOST: "localhost"
