@@ -67,7 +67,6 @@ jobs:
         uses: travisfriesen/workflows/build_and_upload_docker_container@main
         with:
           IMAGE_NAME: ${{ needs.set-port.outputs.IMAGE_NAME }}
-        secrets: inherit
 
       - name: Deploy using Ansible Playbook
         uses: travisfriesen/workflows/download_docker_container_and_run_ansible_playbook@main
