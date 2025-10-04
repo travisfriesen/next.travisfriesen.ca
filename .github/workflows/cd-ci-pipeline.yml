@@ -33,7 +33,7 @@ jobs:
         id: set-port
         run: |
           if [[ "${GITHUB_REF##*/}" == "release" ]]; then
-            echo "PORT=80" >> $GITHUB_OUTPUT
+            echo "PORT=8000" >> $GITHUB_OUTPUT
             echo "ENVIRONMENT=zeus-production" >> $GITHUB_OUTPUT
             echo "ENV_URL=https://travisfriesen.ca" >> $GITHUB_OUTPUT
             echo "IMAGE_NAME=tf.ca-zeus-production" >> $GITHUB_OUTPUT
@@ -43,7 +43,7 @@ jobs:
             echo "ENV_URL=https://staging.travisfriesen.travisf.ca" >> $GITHUB_OUTPUT
             echo "IMAGE_NAME=tf.ca-zeus-staging" >> $GITHUB_OUTPUT
           else
-            echo "PORT=3000" >> $GITHUB_OUTPUT
+            echo "PORT=6000" >> $GITHUB_OUTPUT
             echo "ENVIRONMENT=zeus-preview" >> $GITHUB_OUTPUT
             echo "ENV_URL=https://preview.travisfriesen.travisf.ca" >> $GITHUB_OUTPUT
             echo "IMAGE_NAME=tf.ca-zeus-preview" >> $GITHUB_OUTPUT
