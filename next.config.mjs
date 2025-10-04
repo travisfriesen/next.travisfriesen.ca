@@ -4,6 +4,14 @@ const nextConfig = {
     // experimental: {
     //     outputStandalone: true,
     // }
+    async rewrites() {
+        return [
+            {
+                source: '/.well-known/webfinger',
+                destination: '/api/.well-known/webfinger'
+            }
+        ];
+    }
 };
 
 
