@@ -49,10 +49,12 @@ export const ProjectCard = ({title, description, github, link, points, tech}: IP
                 <div className={`col-span-5 my-auto text-gold-95`}>
                     <h1 className={`text-2xl font-manrope font-bold mx-[2vw] mt-1`}>{title}</h1>
                 </div>
+                {(github || link) && (
                 <div className={`col-start-7 col-span-2 flex gap-10 m-auto mr-[2vw] pt-2`}>
                     {github && <a href={github}><FaGithub size={40}/></a>}
                     {link && <a href={link}><FaLink size={40}/></a>}
                 </div>
+                )}
                 <div className={`col-span-8 my-auto mx-[2vw] mt-1`}>
                     <p className={`font-manrope font-bold whitespace-pre-wrap`}>{description}</p>
                 </div>
