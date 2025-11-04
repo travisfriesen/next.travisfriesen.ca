@@ -1,0 +1,18 @@
+{
+  "rbc": {
+    "title": "Quality Engineer Co-op",
+    "location": "Royal Bank of Canada - Toronto, ON\nMay 2025 - August 2025",
+    "points": {
+      "1": "Migrated over 30+ APIs from Jenkins to GitHub Actions with Ansible, improving pipeline maintainability and consistency",
+      "2": "Developed and implemented a custom Robot Framework library to extract, validate PDF form data, and handle form variations using regex based comparisons ",
+      "3": "Stabilized automated tests in Robot Framework using better keywords and python libraries",
+      "4": "Adapted existing GitHub Actions workflows to ensure seamless deployments during API migration"
+    },
+    "tech": {
+      "1": "Python",
+      "2": "Robot Framework",
+      "3": "GitHub Actions",
+      "4": "Ansible"
+    }
+  }
+}
