@@ -40,12 +40,12 @@ jobs:
           elif [[ "${{ github.event_name }}" == "pull_request" && "${{ github.base_ref }}" == "release" ]]; then
             echo "PORT=4000" >> $GITHUB_OUTPUT
             echo "ENVIRONMENT=zeus-staging" >> $GITHUB_OUTPUT
-            echo "ENV_URL=https://staging.travisfriesen.travisf.ca" >> $GITHUB_OUTPUT
+            echo "ENV_URL=https://staging.tfca.travisf.ca" >> $GITHUB_OUTPUT
             echo "IMAGE_NAME=tf.ca-zeus-staging" >> $GITHUB_OUTPUT
           else
             echo "PORT=6000" >> $GITHUB_OUTPUT
             echo "ENVIRONMENT=zeus-preview" >> $GITHUB_OUTPUT
-            echo "ENV_URL=https://preview.travisfriesen.travisf.ca" >> $GITHUB_OUTPUT
+            echo "ENV_URL=https://preview.tfca.travisf.ca" >> $GITHUB_OUTPUT
             echo "IMAGE_NAME=tf.ca-zeus-preview" >> $GITHUB_OUTPUT
           fi
       - name: Debug outputs

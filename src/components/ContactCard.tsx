@@ -10,7 +10,7 @@ export const ContactCard = () => {
                 <p>I'm also on LinkedIn, feel free to connect with me there!</p>
                 <br/>
                 <p>If you are interested in contacting me, I would encourage you to email me at
-                    travis[at]travisfriesen.ca or to add me on Discord (@travisfriesen)</p>
+                    travis[at]travisfriesen.ca</p>
             </div>
             <div className={`flex m-auto gap-[4vw] py-5`}>
                 <a href={"https://github.com/travisfriesen"}><FaGithub size={60}/></a>
