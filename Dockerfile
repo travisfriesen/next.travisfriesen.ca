@@ -7,7 +7,7 @@ COPY package.json bun.lockb ./
 RUN bun install --frozen-lockfile
 
 # Copy only necessary files for build
-COPY tsconfig.json next.config.mjs ./
+COPY tsconfig.json next.config.mjs postcss.config.mjs tailwind.config.ts ./
 COPY src/ ./src/
 COPY public/ ./public/
 
@@ -19,17 +19,13 @@ RUN bun run build
 FROM oven/bun:1-slim AS production
 WORKDIR /usr/src/app
 
-# Copy only runtime dependencies
-COPY package.json bun.lockb ./
-RUN bun install --frozen-lockfile --production
-
-# Copy built app from builder stage
-COPY --from=builder /usr/src/app/.next ./.next
+# Copy the standalone output and static files
+COPY --from=builder /usr/src/app/.next/standalone ./
+COPY --from=builder /usr/src/app/.next/static ./.next/static
 COPY --from=builder /usr/src/app/public ./public
-COPY --from=builder /usr/src/app/next.config.mjs ./
 
-# Expose port and run
+# Expose port and run the standalone server
 EXPOSE 3000
 USER bun
 ENV NODE_ENV=production
-ENTRYPOINT ["bun", "run", "start"]
+CMD ["node", "server.js"]

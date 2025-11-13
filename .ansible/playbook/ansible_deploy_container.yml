@@ -42,3 +42,5 @@
         ports:
           - "{{ port }}:3000"
         container_default_behavior: compatibility
+        networks:
+            - name: proxy
