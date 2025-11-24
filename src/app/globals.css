@@ -79,6 +79,6 @@
 
   body {
     color: rgb(var(--foreground-rgb));
-    background: #fdf9ed;
+    background: theme('colors.gold-5');
   }
 }
