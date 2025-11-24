@@ -2,7 +2,7 @@ import Image from "next/image";
 import travisImg from "../../public/travis.png";
 
 export const ProfileCard = () => {
-    return(
+    return (
         <div>
             <div className={`desktop-only grid grid-cols-2 m-auto w-[95vw] h-fit py-[5%]`}>
                 <div className={`my-auto`}>
