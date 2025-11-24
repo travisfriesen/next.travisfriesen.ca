@@ -7,6 +7,7 @@ COPY package.json bun.lockb ./
 RUN bun install --frozen-lockfile
 
 # Copy only necessary files for build
+
 COPY tsconfig.json next.config.mjs postcss.config.mjs tailwind.config.ts ./
 COPY src/ ./src/
 COPY public/ ./public/
