@@ -52,7 +52,7 @@
     "github": "https://github.com/travisfriesen/next.travisfriesen.ca",
     "link": "https://travisfriesen.ca",
     "points": [
-      "Developed a personal portfolio website using Next.js with Typescript, and TailwindsCSS",
+      "Developed a personal portfolio website using Next.js with Typescript, and TailwindCSS",
       "Designed website with an adaptable card style system for conveying information",
       "Deployed to an Oracle Cloud VM using Ansible and Github Actions for CI/CD"
     ],
