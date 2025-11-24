@@ -97,10 +97,9 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: |
-                # Deployment Status - ${{ github.context.issue.number }}.${{ github.run_attempt }}
+              body: `# Deployment Status - ${{ github.event.pull_request.number }}.${{ github.run_attempt }}
   
                 | Environment | Status | Deployment URL |
                 |---|---|---|
-                | ${{ needs.set-port.outputs.ENVIRONMENT }} | ${statusIcon} | [${{ needs.set-port.outputs.ENV_URL }}](${{ needs.set-port.outputs.ENV_URL }}) |
-            })
+                | \`${{ needs.set-port.outputs.ENVIRONMENT }}\` | ${statusIcon} | [${{ needs.set-port.outputs.ENV_URL }}](${{ needs.set-port.outputs.ENV_URL }}) |
+            })`
