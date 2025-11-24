@@ -1,67 +1,66 @@
-{
-  "commitcv": {
+[
+  {
     "title": "CommitCV",
     "description": "CommitCV is a JSON based Latex resume parser, taking in a JSON file with your resume, parsing and outputting it to either PDF, .json, or .tex.",
     "github": "https://github.com/CommitCV/CommitCV",
     "link": "https://commitcv.com",
-    "points": {
-      "1": "Developed a JSON based online resume editor using component based cards",
-      "2": "Implemented an Express webserver endpoint to handle pdflatex conversions",
-      "3": "Containerized the application using Docker to manage simple deployments"
-    },
-    "tech": {
-      "1": "Typescript",
-      "2": "Next.js",
-      "3": "Express.js"
-    }
+    "points": [
+      "Developed a JSON based online resume editor using component based cards",
+      "Implemented an Express webserver endpoint to handle pdflatex conversions",
+      "Containerized the application using Docker to manage simple deployments"
+    ],
+    "tech": [
+      "Typescript",
+      "Next.js",
+      "Express.js"
+    ]
   },
-  "csdiscordbot": {
+  {
     "title": "UManitoba Computer Science Discord Bot",
     "description": "The verification and moderation bot for the University of Manitoba's Computer Science discord. Used to help manage access to the server and link discord users to their university email.",
     "github": "https://github.com/umanitoba-cssa/honkbot2",
-    "link": "",
-    "points": {
-      "1": "Assisted in Development and Maintenance of the Moderation and Verification bot for the CS Discord Server",
-      "2": "Developed Logging feature for Moderation Commands",
-      "3": "Worked on integrating a Pocketbase database for data storage"
-    },
-    "tech": {
-      "1": "Typescript",
-      "2": "Discord.js",
-      "3": "Pocketbase DB"
-    }
+    "points": [
+      "Assisted in Development and Maintenance of the Moderation and Verification bot for the CS Discord Server",
+      "Developed Logging feature for Moderation Commands",
+      "Worked on integrating a Pocketbase database for data storage"
+    ],
+    "tech": [
+      "Typescript",
+      "Discord.js",
+      "Pocketbase DB"
+    ]
   },
-  "rubysmb": {
+  {
     "title": "Business website for Ruby's Paradise",
     "description": "Ruby's Paradise is a small business that runs both a driving range and arcade in Winnipeg Beach, MB. I was asked to help them create a website to help enhance their presence online and to have a place to direct customers to for enquiries.",
     "github": "https://github.com/travisfriesen/rubys-website",
     "link": "https://rubysmb.ca",
-    "points": {
-      "1": "Developed a responsive website with Next.js using Typescript",
-      "2": "Designed website with an adaptable card style system for conveying information",
-      "3": "Worked to ensure designs followed WCAG Colour Guidelines"
-    },
-    "tech": {
-      "1": "Typescript",
-      "2": "Next.js",
-      "3": "Vercel"
-    }
+    "points": [
+      "Developed a responsive website with Next.js using Typescript",
+      "Designed website with an adaptable card style system for conveying information",
+      "Worked to ensure designs followed WCAG Colour Guidelines"
+    ],
+    "tech": [
+      "Typescript",
+      "Next.js",
+      "Vercel"
+    ]
   },
-  "tf.ca": {
+  {
     "title": "Personal Portfolio Website",
     "description": "This is my third iteration of my personal portfolio website. The last revamp being in January 2025, working to showcase the new design and technical skills that I have developed since the last revamp.",
     "github": "https://github.com/travisfriesen/next.travisfriesen.ca",
     "link": "https://travisfriesen.ca",
-    "points": {
-      "1": "Developed a personal portfolio website using Next.js with Typescript, and TailwindsCSS",
-      "2": "Designed website with an adaptable card style system for conveying information",
-      "3": "Hosted using a laptop and a Ubuntu VM on an app called Coolify"
-    },
-    "tech": {
-      "1": "Typescript",
-      "2": "Next.js",
-      "3": "TailwindCSS",
-      "4": "Coolify"
-    }
+    "points": [
+      "Developed a personal portfolio website using Next.js with Typescript, and TailwindsCSS",
+      "Designed website with an adaptable card style system for conveying information",
+      "Deployed to an Oracle Cloud VM using Ansible and Github Actions for CI/CD"
+    ],
+    "tech": [
+      "Typescript",
+      "Next.js",
+      "TailwindCSS",
+      "Ansible"
+    ]
   }
-}
+]

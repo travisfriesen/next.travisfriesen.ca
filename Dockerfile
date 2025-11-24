@@ -1,9 +1,9 @@
 # Build stage
-FROM oven/bun:1 AS builder
+FROM oven/bun:1.3.3 AS builder
 WORKDIR /usr/src/app
 
 # Copy only package files first to leverage caching
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 # Copy only necessary files for build
@@ -17,7 +17,7 @@ ENV NODE_ENV=production
 RUN bun run build
 
 # Production stage
-FROM oven/bun:1-slim AS production
+FROM oven/bun:1.3.3-slim AS production
 WORKDIR /usr/src/app
 
 # Copy the standalone output and static files
