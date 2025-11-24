@@ -3,7 +3,7 @@ FROM oven/bun:1 AS builder
 WORKDIR /usr/src/app
 
 # Copy only package files first to leverage caching
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
 # Copy only necessary files for build
