@@ -80,3 +80,27 @@ jobs:
           USER: "ubuntu"
           PLAYBOOK_PATH: ".ansible/playbook/ansible_deploy_container.yml"
           HOST: "localhost"
+
+  send_summary_for_pr:
+    runs-on: ubuntu-latest
+    needs: [ set-port, deploy ]
+    if: always() && github.event_name == 'pull_request'
+    steps:
+      - name: Send Deployment Summary for PR
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const deployStatus = '${{ needs.deploy.result }}';
+            const statusIcon = deployStatus === 'success' ? '✅ Success' : '⛔ Failed';
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: |
+                # Deployment Status - ${{ github.context.issue.number }}.${{ github.run_attempt }}
+  
+                | Environment | Status | Deployment URL |
+                |---|---|---|
+                | ${{ needs.set-port.outputs.ENVIRONMENT }} | ${statusIcon} | [${{ needs.set-port.outputs.ENV_URL }}](${{ needs.set-port.outputs.ENV_URL }}) |
+            })
