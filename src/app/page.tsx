@@ -23,28 +23,8 @@ interface IWork {
     tech: string[];
 }
 
-const mapProjectsData = (data: any): IProject[] => {
-    return Object.values(data).map((project: any) => ({
-        title: project.title,
-        description: project.description,
-        github: project.github,
-        link: project.link,
-        points: Object.values(project.points),
-        tech: Object.values(project.tech),
-    }));
-};
-
-const mapWorkData = (data: any): IWork[] => {
-    return Object.values(data).map((work: any) => ({
-        title: work.title,
-        location: work.location,
-        points: Object.values(work.points),
-        tech: Object.values(work.tech),
-    }));
-}
-
-const projects: IProject[] = mapProjectsData(projectsData);
-const work: IWork[] = mapWorkData(workData);
+const projects = projectsData as IProject[];
+const work = workData as IWork[];
 
 export default function Home() {
     return (
