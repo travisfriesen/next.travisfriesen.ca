@@ -1,66 +1,84 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@font-face {
+@config '../../tailwind.config.ts';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility grid-8-auto {
+  grid-template-columns: repeat(8, minmax(0, auto));
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@layer utilities {
+  @font-face {
     font-family: 'Array';
     src: url('./fonts/Array/Array-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
-}
+  }
 
-@font-face {
+  @font-face {
     font-family: 'Array';
     src: url('./fonts/Array/Array-BoldWide.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
-}
+  }
 
-@font-face {
+  @font-face {
     font-family: 'Array';
     src: url('./fonts/Array/Array-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
-}
+  }
 
-@font-face {
+  @font-face {
     font-family: 'Array';
     src: url('./fonts/Array/Array-Semibold.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
-}
+  }
 
-@font-face {
+  @font-face {
     font-family: 'Array';
     src: url('./fonts/Array/Array-SemiboldWide.woff2') format('woff2');
     font-weight: 600;
     font-style: normal;
-}
+  }
 
-@font-face {
+  @font-face {
     font-family: 'Array';
     src: url('./fonts/Array/Array-Wide.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
-}
-
-@layer components {
-    .grid-8-auto {
-        grid-template-columns: repeat(8, minmax(0, auto));
-    }
-}
-
-:root {
-    --foreground-rgb: 0, 0, 0;
-}
-
-body {
-    color: rgb(var(--foreground-rgb));
-    background: #FDF9ED;
+  }
 }
 
 @layer utilities {
-    .text-balance {
-        text-wrap: balance;
-    }
+  :root {
+    --foreground-rgb: 0, 0, 0;
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: #fdf9ed;
+  }
 }

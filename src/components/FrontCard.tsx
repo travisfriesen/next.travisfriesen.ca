@@ -1,8 +1,8 @@
 export const FrontCard = () => {
     return (
-        <div className={`w-[100vw] h-[100vh] min-h-[720px] flex`}>
+        <div className={`w-screen h-screen min-h-[720px] flex`}>
             <div
-                className="flex bg-green-80 dark:bg-green-20 bg-gradient-to-tr from-green-90 to-green-50 rounded-lg h-[95vh] w-[95vw] min-h-[700px] m-auto">
+                className="flex bg-green-80 dark:bg-green-20 bg-linear-to-tr from-green-90 to-green-50 rounded-lg h-[95vh] w-[95vw] min-h-[700px] m-auto">
                 <div className="my-auto ml-[5%]">
                     {/* eslint-disable-next-line react/no-unescaped-entities */}
                     <p className="text-green-5 text-4xl">Hi, I'm</p>
