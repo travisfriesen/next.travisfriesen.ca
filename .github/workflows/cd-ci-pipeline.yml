@@ -102,4 +102,4 @@ jobs:
                 | Environment | Status | Deployment URL |
                 |---|---|---|
                 | \`${{ needs.set-port.outputs.ENVIRONMENT }}\` | ${statusIcon} | [${{ needs.set-port.outputs.ENV_URL }}](${{ needs.set-port.outputs.ENV_URL }}) |
-            })`
+            `});
