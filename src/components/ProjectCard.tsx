@@ -13,12 +13,13 @@ interface IProject {
 
 
 
-const PointsList = ({points}: { points: string[] }) => {
+const PointsList = ({points, type}: { points: string[], type: string }) => {
+    const textColour = type === "job" ? "text-green-95 dark:text-green-10" : "text-gold-95 dark:text-gold-10";
     return (
         <div>
             <ul className={`ml-[3vw]`}>
                 {points.map((point, index) => (
-                    <li className={`font-manrope font-bold list-disc`} key={index}>{point}</li>
+                    <li className={`font-manrope ${textColour} font-bold list-disc`} key={index}>{point}</li>
                 ))}
             </ul>
         </div>
@@ -39,11 +40,11 @@ const TechList = ({tech, type}: { tech: string[], type: string }) => {
 
 
 export const ProjectCard = ({title, description, github, link, points, tech, type}: IProject) => {
-    var bgColour = "bg-gold-30";
-    var textColour = "text-gold-95";
+    var bgColour = "bg-gold-30 dark:bg-gold-70";
+    var textColour = "text-gold-95 dark:text-gold-10";
     if (type === "job") {
-        bgColour = "bg-green-30";
-        textColour = "text-green-95";
+        bgColour = "bg-green-30 dark:bg-green-70";
+        textColour = "text-green-95 dark:text-green-10";
     }
 
     if (!type) {
@@ -64,10 +65,10 @@ export const ProjectCard = ({title, description, github, link, points, tech, typ
                     </div>
                 )}
                 <div className={`col-span-8 my-auto mx-[2vw] mt-1`}>
-                    <p className={`font-manrope font-bold whitespace-pre-wrap`}>{description}</p>
+                    <p className={`font-manrope ${textColour} font-bold whitespace-pre-wrap`}>{description}</p>
                 </div>
                 <div className={`col-span-8 mx-[2vw] my-2`}>
-                    <PointsList points={points}/>
+                    <PointsList points={points} type={type} />
                 </div>
                 <div className={`col-span-8 mx-[2vw] desktop:rtl:table my-2`}>
                     <TechList tech={tech} type={type}/>

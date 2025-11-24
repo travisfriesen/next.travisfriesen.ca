@@ -3,7 +3,7 @@ import {FaGithub, FaLinkedin} from "react-icons/fa6";
 export const ContactCard = () => {
     return (
         <div className={`flex flex-col gap-6 py-[5vh]`}>
-            <div className={`m-auto w-[65vw] text-gold-95 text-xl font-manrope font-bold`}>
+            <div className={`m-auto w-[65vw] text-gold-95 dark:text-gold-5 text-xl font-manrope font-bold`}>
                 <p>If you are interested in more of my work, I would encourage you to check out my GitHub.</p>
                 <br/>
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
