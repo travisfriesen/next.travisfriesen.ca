@@ -8,8 +8,7 @@ export const TechCard = ({text, type}: ITechCard) => {
     const textColour = type === "job" ? "text-green-95" : "text-gold-95";
     return (
         <div className={` border-[3px] ${bgColour} rounded-xl`}>
-            <p className={`desktop-only font-manrope font-bold ${textColour} py-1 px-5 text-xl`}>{text}</p>
-            <p className={`mobile-only text-center font-manrope font-bold ${textColour} py-1 px-3 text-xl`}>{text}</p>
+            <p className={`mobile:text-center font-manrope font-bold ${textColour} py-1 desktop:px-5 mobile:px-3 text-xl`}>{text}</p>
         </div>
     )
 }
