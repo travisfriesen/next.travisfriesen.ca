@@ -39,16 +39,12 @@ const TechList = ({tech, type}: { tech: string[], type: string }) => {
 };
 
 
-export const ProjectCard = ({title, description, github, link, points, tech, type}: IProject) => {
+export const ProjectCard = ({title, description, github, link, points, tech, type = "project"}: IProject) => {
     var bgColour = "bg-gold-30 dark:bg-gold-70";
     var textColour = "text-gold-95 dark:text-gold-10";
     if (type === "job") {
         bgColour = "bg-green-30 dark:bg-green-70";
         textColour = "text-green-95 dark:text-green-10";
-    }
-
-    if (!type) {
-        type = "project";
     }
 
     return (
