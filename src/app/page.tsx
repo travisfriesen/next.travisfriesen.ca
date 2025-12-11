@@ -50,7 +50,6 @@ export default function Home() {
                 <Header text={"Contact"}/>
                 <ContactCard/>
             </div>
-            <Footer/>
         </main>
     );
 }
