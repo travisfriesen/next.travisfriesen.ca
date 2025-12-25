@@ -25,8 +25,12 @@ COPY --from=builder /usr/src/app/.next/standalone ./
 COPY --from=builder /usr/src/app/.next/static ./.next/static
 COPY --from=builder /usr/src/app/public ./public
 
+# Make cache folder and give bun ownership
+RUN mkdir -p /usr/src/app/.next/cache &&  \
+    chown -R bun:bun /usr/src/app
+
 # Expose port and run the standalone server
 EXPOSE 3000
 USER bun
 ENV NODE_ENV=production
-CMD ["node", "server.js"]
+CMD ["bun", "run", "server.js"]
