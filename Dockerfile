@@ -23,6 +23,7 @@ WORKDIR /usr/src/app
 # Copy the standalone output and static files
 COPY --from=builder /usr/src/app/.next/standalone ./
 COPY --from=builder /usr/src/app/.next/static ./.next/static
+COPY --from=builder --chown=bun:bun /usr/src/app/.next/server ./.next/server
 COPY --from=builder /usr/src/app/public ./public
 
 # Make cache folder and give bun ownership
