@@ -16,9 +16,23 @@ This makes is super simple to add/modify/remove projects from my website, and wi
 You can launch a local version of this project by cloning it and then running
 
 ```bash
-bun dev
+# install packages
+bun install
+
+# run dev environment
+bun run dev
 ```
 
 to start the development server and opening [http://localhost:3000](http://localhost:3000) to view it within your browser.
 
 This project uses the font Array from [fontshare.com](https://www.fontshare.com/fonts/array) and Manrope from [fonts.google.com](https://fonts.google.com/specimen/Manrope).
+
+## Running the Production Environment
+
+Production builds are produced using Docker conatiners. You can adjust the port by either changing the port in `docker-compose.yml` or by passing in the option while establishing the container.
+
+```bash
+docker compose up -d
+```
+
+This will install everything that is required and bring up the container on port 3000 (or the manually defined port)
