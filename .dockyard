@@ -1,0 +1,6 @@
+name: travisfriesen-ca
+services:
+  - name: web
+  dockerfile: Dockerfile
+  port: 0
+  subdomain: "test.example.com"
