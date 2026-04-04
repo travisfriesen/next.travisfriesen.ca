@@ -1,6 +1,6 @@
-pipeline:
+steps:
   build:
-    image: codeberg.org/woodpecker-plugins/node-pm
+    image: codeberg.org/woodpecker-plugins/node-pm:1.3.6
     settings:
       run: build # script name
       with: bun # if `with` is set, enforce to use this package manager
