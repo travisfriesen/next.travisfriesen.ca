@@ -1,0 +1,8 @@
+pipeline:
+  build:
+    image: codeberg.org/woodpecker-plugins/node-pm
+    settings:
+      run: build # script name
+      with: bun # if `with` is set, enforce to use this package manager
+      frozen_lockfile: true # recommended
+      ignore_node_modules: true # recommended
