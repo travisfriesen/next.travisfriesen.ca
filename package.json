@@ -27,7 +27,7 @@
 		"eslint-config-next": "^16.1.7",
 		"postcss": "^8.5.8",
 		"tailwindcss": "^4.2.1",
-		"typescript": "^5.9.3"
+		"typescript": "^6.0.0"
 	},
 	"module": "index.ts",
 	"type": "module",
