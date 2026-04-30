@@ -15,7 +15,7 @@ export const ProfileCard = () => {
                 </div>
                 <div className={`font-manrope font-bold text-xl my-auto text-gold-95 dark:text-gold-5 ml-4 mobile:mt-7`}>
                     <p>
-                        I am a student working towards a degree in Computer Science University of Manitoba.
+                        I am a student working towards a degree in Computer Science at the University of Manitoba.
                     </p>
                     <br/>
                     <p>
