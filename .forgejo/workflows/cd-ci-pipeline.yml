@@ -1,0 +1,68 @@
+name: CI/CD Pipeline
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+  issues: write
+  pull-requests: write
+
+on:
+  push:
+    branches:
+      - main
+      - release
+  pull_request:
+    branches:
+      - release
+  workflow_dispatch:
+
+jobs:
+  docker-build:
+    runs-on: debian-13
+    permissions:
+      contents: read
+    env:
+      REGISTRY: git.travisf.ca
+      IMAGE_REPO: git.travisf.ca/${{ github.repository }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Load vault secret config
+        uses: https://git.travisf.ca/infrastructure-ci/vault-config-loader@v1.1
+        with:
+          config_file: vault_secrets.cfg
+
+      - name: Fetch secrets from Vault
+        uses: https://git.travisf.ca/infrastructure-ci/vault-action@v3
+        with:
+          url: ${{ vars.VAULT_ADDRESS }}
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: ${{ env.VAULT_SECRETS }}
+
+      - name: Login to Forgejo registry
+        uses: docker/login-action@v3
+        with:
+          registry: git.travisf.ca
+          username: ${{ env.FORGEJO_ACTOR }}
+          password: ${{ env.FORGEJO_CI_TOKEN }}
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push multi-arch image
+        env:
+          RELEASE_ID: ${{ github.event.release.id }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          TAGS="-t ${IMAGE_REPO}:${REF_NAME} -t ${IMAGE_REPO}:latest"
+          if [ "${{ github.event_name }}" = "release" ] && [ -n "${RELEASE_ID}" ]; then
+            TAGS="$TAGS -t ${IMAGE_REPO}:release-${RELEASE_ID}"
+          fi
+          docker buildx build --platform linux/amd64,linux/arm64 $TAGS --push .
