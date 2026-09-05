@@ -1,5 +1,22 @@
 [
   {
+    "title": "Software Developer Intern",
+    "location": "Royal Bank of Canada - Toronto, ON\nMay 2026 - August 2026",
+    "points": [
+      "Assembled and implemented a 7-stage multi-language codebase parsing and enrichment pipeline across COBOL, JCL, Java, C#, Python, JavaScript, and Database dialects via tree-sitter and regex parsers",
+      "Optimized pipeline speed by 8x by implementing parallel and batch-processing 4 (repos/job) leading to processing 70+ repositories in under 2 hours generating 15,000 Neo4J graph nodes mapping intra-repository dependencies",
+      "Designed and engineered an on-demand container orchestration platform and a variable-config job templating system on OpenShift/Kubernetes to avoid multi-hour delays caused by Github Actions pipelines",
+      "Built compliant RHEL images with configurable runtimes (Python, Java, Node, .NET), Vault secret and service credential injection, Websocket terminal connection with audit logging, file I/O to interact/manage the containers",
+      "Architected an extendable CRON based job orchestration service compatible with the container platform with pluggable job types with registrable database tables, API endpoints and UI pages"
+    ],
+    "tech": [
+      "Kubernetes",
+      "OpenShift Container Platform",
+      "LLM Processing",
+      "RHEL"
+    ]
+  },
+  {
     "title": "Quality Engineer Intern",
     "location": "Royal Bank of Canada - Toronto, ON\nMay 2025 - August 2025",
     "points": [
